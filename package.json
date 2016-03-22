@@ -6,6 +6,7 @@
   "scripts": {
     "prebuild": "mkdirp lib && mkdirp dist && npm run clean",
     "test": "mocha --compilers js:babel/register",
+    "test:docker": "docker build -t test-transformime-jupyter -f test/Dockerfile . && docker run test-transformime-jupyter",
     "build": "npm run build:es5 && npm run build:browser",
     "build:es5": "babel src --out-dir lib/ --source-maps",
     "build:browser": "browserify lib/*.js --outfile dist/index.js",
